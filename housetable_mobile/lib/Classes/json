@@ -1,0 +1,447 @@
+{
+  "relationships": [
+    {
+      "id": 1,
+      "type": "represent",
+      "text": "i represent the owner"
+    },
+    {
+      "id": 2,
+      "type": "prospective client",
+      "text": "The seller is a prospective client"
+    },
+    {
+      "id": 3,
+      "type": "referr",
+      "text": "i do not represent the owner but i am referring to Housetable"
+    }
+  ],
+  "start_renovations": [
+    {
+      "id": 1,
+      "text": "ASAP"
+    },
+    {
+      "id": 2,
+      "text": "2-4 weeks"
+    },
+    {
+      "id": 3,
+      "text": "4-6 weeks"
+    },
+    {
+      "id": 3,
+      "text": "Just browsing"
+    }
+  ],
+  "status_types": [
+    {
+      "id": 1,
+      "text": "peding"
+    },
+    {
+      "id": 2,
+      "text": "decline"
+    },
+    {
+      "id": 3,
+      "text": "approved"
+    }
+  ],
+  "house_items": [
+    {
+      "type": 1,
+      "name": "dishwasher",
+      "list": [
+        {
+          "id": 1,
+          "name": "front control"
+        },
+        {
+          "id": 2,
+          "name": "top control"
+        },
+        {
+          "id": 2,
+          "name": "countertop"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "name": "wall oven",
+      "list": [ ### CHANGE TO ITEM TYPE OBJECT!!!
+        {
+          "id": 1,
+          "name": "single wall"
+        },
+        {
+          "id": 2,
+          "name": "double wall"
+        },
+        {
+          "id": 3,
+          "name": "microwave combo"
+        },
+        {
+          "id": 4,
+          "name": "warming Drawer"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "name": "cooktop",
+      "list": [
+        {
+          "id": 1,
+          "name": "radiant"
+        },
+        {
+          "id": 2,
+          "name": "induction"
+        },
+        {
+          "id": 3,
+          "name": "coil"
+        },
+        {
+          "id": 4,
+          "name": "gas"
+        }
+      ]
+    },
+    {
+      "type": 4,
+      "name": "refrigerator",
+      "list": [
+        {
+          "id": 1,
+          "name": "french door"
+        },
+        {
+          "id": 2,
+          "name": "side by side"
+        },
+        {
+          "id": 3,
+          "name": "top freezer"
+        },
+        {
+          "id": 4,
+          "name": "bottom freezer"
+        }
+      ]
+    },
+    {
+      "type": 5,
+      "name": "kitchen light",
+      "list": [
+        {
+          "id": 1,
+          "name": "recessed"
+        },
+        {
+          "id": 2,
+          "name": "surface"
+        },
+        {
+          "id": 3,
+          "name": "pendant"
+        }
+      ]
+    },
+    {
+      "type": 6,
+      "name": "island",
+      "list": [
+        {
+          "id": 1,
+          "name": "rolling cart"
+        },
+        {
+          "id": 2,
+          "name": "small non-portable"
+        },
+        {
+          "id": 3,
+          "name": "base cabinet with Countertop"
+        },
+        {
+          "id": 4,
+          "name": "fully functional electricity and Water"
+        },
+        {
+          "id": 5,
+          "name": "double-tiered cooking/eating"
+        }
+      ]
+    },
+    {
+      "type": 7,
+      "name": "faucet",
+      "list": [
+        {
+          "id": 1,
+          "name": "pull down"
+        },
+        {
+          "id": 2,
+          "name": "pull out"
+        },
+        {
+          "id": 3,
+          "name": "single handle"
+        },
+        {
+          "id": 4,
+          "name": "dual handle"
+        },
+        {
+          "id": 5,
+          "name": "commercial"
+        },
+        {
+          "id": 6,
+          "name": "separate spray"
+        },
+        {
+          "id": 7,
+          "name": "pot filler"
+        },
+        {
+          "id": 8,
+          "name": "motion detection"
+        }
+      ]
+    },
+    {
+      "type": 8,
+      "name": "counter top",
+      "list": [
+        {
+          "id": 1,
+          "name": "granite"
+        },
+        {
+          "id": 2,
+          "name": "soapsone"
+        },
+        {
+          "id": 3,
+          "name": "marble"
+        },
+        {
+          "id": 4,
+          "name": "quartz"
+        },
+        {
+          "id": 5,
+          "name": "concrete"
+        },
+        {
+          "id": 6,
+          "name": "stainless steel"
+        },
+        {
+          "id": 7,
+          "name": "wood"
+        },
+        {
+          "id": 8,
+          "name": "laminate"
+        },
+        {
+          "id": 9,
+          "name": "ceramic tile"
+        },
+        {
+          "id": 10,
+          "name": "solid surface"
+        }
+      ]
+    },
+    {
+      "type": 9,
+      "name": "flooring",
+      "list": [
+        {
+          "id": 1,
+          "name": "hardwood"
+        },
+        {
+          "id": 2,
+          "name": "bamboo"
+        },
+        {
+          "id": 3,
+          "name": "ceramic tile"
+        },
+        {
+          "id": 4,
+          "name": "concreate"
+        },
+        {
+          "id": 5,
+          "name": "natural stone tile"
+        },
+        {
+          "id": 6,
+          "name": "linoleum"
+        },
+        {
+          "id": 7,
+          "name": "vinyl"
+        }
+      ]
+    },
+    {
+      "type": 10,
+      "name": "kitchen cabinets",
+      "list": [
+        {
+          "id": 1,
+          "name": "raised panel"
+        },
+        {
+          "id": 2,
+          "name": "flat panel"
+        },
+        {
+          "id": 3,
+          "name": "slab panel"
+        },
+        {
+          "id": 4,
+          "name": "beaded panel"
+        },
+        {
+          "id": 5,
+          "name": "miterd panel"
+        },
+        {
+          "id": 6,
+          "name": "applied molding panel"
+        }
+      ]
+    },
+    {
+      "type": 11,
+      "name": "kitchen Backsplashes",
+      "list": [
+        {
+          "id": 1,
+          "name": "ceramic tiles"
+        },
+        {
+          "id": 2,
+          "name": "metal tiles"
+        },
+        {
+          "id": 3,
+          "name": "stainless steel"
+        },
+        {
+          "id": 4,
+          "name": "glass blocks"
+        },
+        {
+          "id": 5,
+          "name": "glass tiles"
+        },
+        {
+          "id": 6,
+          "name": "granite tiles"
+        },
+        {
+          "id": 7,
+          "name": "marble tiles"
+        },
+        {
+          "id": 8,
+          "name": "engineered stone tiles"
+        },
+        {
+          "id": 9,
+          "name": "slate tiles"
+        },
+        {
+          "id": 10,
+          "name": "soapstone tiles"
+        }
+      ]
+    },
+    {
+      "type": 12,
+      "name": "kitchen sink",
+      "list": [
+        {
+          "id": 1,
+          "name": "top mount"
+        },
+        {
+          "id": 2,
+          "name": "undermount"
+        },
+        {
+          "id": 3,
+          "name": "double basin/bowl"
+        },
+        {
+          "id": 4,
+          "name": "single basin/bowl"
+        },
+        {
+          "id": 5,
+          "name": "farmhouse"
+        },
+        {
+          "id": 6,
+          "name": "drainboard"
+        },
+        {
+          "id": 7,
+          "name": "Low divider bouble basin"
+        },
+        {
+          "id": 8,
+          "name": "integrated"
+        },
+        {
+          "id": 9,
+          "name": "corner"
+        }
+      ]
+    },
+    {
+      "type": 13,
+      "name": "range hood",
+      "list": [
+        {
+          "id": 1,
+          "name": "under cabinet"
+        },
+        {
+          "id": 2,
+          "name": "over the range"
+        },
+        {
+          "id": 3,
+          "name": "island"
+        },
+        {
+          "id": 4,
+          "name": "wall mounted"
+        },
+        {
+          "id": 5,
+          "name": "down draft"
+        },
+        {
+          "id": 6,
+          "name": "insert"
+        }
+      ]
+    }
+  ]
+}
