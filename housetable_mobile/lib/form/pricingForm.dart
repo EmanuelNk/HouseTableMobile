@@ -79,9 +79,12 @@ class _PricingFormState extends State<PricingForm> {
               decoration: InputDecoration(
                   labelText: "Enter your number",
                   errorText:
-                      valid ? null : "you must enter a number higher than 0"),
+                      valid ? null : "you must enter a number"),
               style: TextStyle(color: Colors.amber[50]),
               keyboardType: TextInputType.number,
+              onChanged: (value) {
+                _setAndValidPrice(currentController, valid);
+              },
               onSubmitted: (value) {
                 _setAndValidPrice(currentController, valid);
               },
