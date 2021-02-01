@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:housetable_mobile/screens/outputScreen.dart';
 import 'package:housetable_mobile/utils/theme.dart';
 import 'package:housetable_mobile/widgets/cards.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,8 @@ class CapturePage extends StatefulWidget {
   _CapturePageState createState() => _CapturePageState();
 }
 
-class _CapturePageState extends State<CapturePage> {  
-
-  List <String> rooms = ['Kitchen', 'Bathroom', 'Room 1', 'Room 2'];
-
+class _CapturePageState extends State<CapturePage> {
+  List<String> rooms = ['Kitchen', 'Bathroom', 'Room 1', 'Room 2'];
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +55,22 @@ class _CapturePageState extends State<CapturePage> {
                     children: rooms.map((p) {
                       return captureCard(context, p, widget.camera);
                     }).toList()),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: OutlineButton(
+                  color: Colors.blue,
+                  child: Text('finish'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OutputForm(
+                                
+                              )),
+                    );
+                  },
+                ),
               )
             ],
           ),

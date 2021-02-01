@@ -137,7 +137,7 @@ class _MyHomeState extends State<MyHome> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      if (_selectedIndex == 2) {
+      if (_selectedIndex == 1) {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -180,12 +180,12 @@ class _MyHomeState extends State<MyHome> {
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   icon: Icon(Icons.home), title: Text('home')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), title: Text('search')),
+              // BottomNavigationBarItem(
+              //     icon: Icon(Icons.search), title: Text('search')),
               BottomNavigationBarItem(
                   icon: Icon(Icons.add_box), title: Text('add')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), title: Text('profile')),
+              // BottomNavigationBarItem(
+              //     icon: Icon(Icons.person), title: Text('profile')),
             ],
             currentIndex: _selectedIndex,
             unselectedItemColor: Color(0xFF966C49),

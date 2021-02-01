@@ -169,13 +169,13 @@ Widget captureCard(BuildContext context, String roomName, CameraDescription came
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))),
         child: Container(
-          decoration: BoxDecoration(
-            border: Border(
-                left: BorderSide(
-              color: ThemeColors.ACCENT_COLOR,
-              width: 7,
-            )),
-          ),
+          // decoration: BoxDecoration(
+          //   border: Border(
+          //       left: BorderSide(
+          //     color: ThemeColors.ACCENT_COLOR,
+          //     width: 7,
+          //   )),
+          // ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
@@ -200,7 +200,7 @@ Widget captureCard(BuildContext context, String roomName, CameraDescription came
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TakePictureScreen(camera: camera,)),
+                      MaterialPageRoute(builder: (context) => TakePictureScreen(camera: camera, percents: 0.0,)),
                     );
                   },
                 ),
