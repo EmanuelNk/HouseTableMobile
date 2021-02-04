@@ -156,7 +156,7 @@ class _ConfirmationFormState extends State<ConfirmationForm> {
     return Scaffold(
       backgroundColor: ThemeColors.BACKGROUND_COLOR,
       appBar: AppBar(
-        title: Text("Pricing Form"),
+        title: Text("Confirmation"),
       ),
       body: Padding(
           padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
@@ -232,11 +232,15 @@ class _ConfirmationFormState extends State<ConfirmationForm> {
                           child: OutlineButton(
                             onPressed: () {postJson();},
                             color: ThemeColors.ACCENT_COLOR,
+                            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0)),
                             borderSide: BorderSide(
-                                color: ThemeColors.ACCENT_BRIGHTER, width: 1),
+                                color: ThemeColors.ACCENT_COLOR, width: 1),
                             highlightedBorderColor: ThemeColors.ACCENT_COLOR,
-                            child: propText('Submit Request', 20,
-                                ThemeColors.ACCENT_BRIGHTER),
+                            child: Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: propText('Submit Request', 20,
+                                  Colors.white),
+                            ),
                           ),
                         )
                       ],

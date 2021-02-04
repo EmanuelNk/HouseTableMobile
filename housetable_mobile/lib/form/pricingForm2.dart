@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housetable_mobile/form/confirmationForm.dart';
-import 'package:housetable_mobile/form/pricingForm2.dart';
+import 'package:housetable_mobile/form/pricingForm3.dart';
 import 'package:housetable_mobile/utils/theme.dart';
 import 'package:housetable_mobile/widgets/BaseWidgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,61 +8,24 @@ import 'package:money2/money2.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:camera/camera.dart';
+import 'pricingForm.dart';
 
-
-class PricingForm extends StatefulWidget {
+class PricingForm2 extends StatefulWidget {
   final CameraDescription camera;
 
-  const PricingForm({Key key, this.camera}) : super(key: key);
+  const PricingForm2({Key key, this.camera}) : super(key: key);
   @override
-  _PricingFormState createState() => _PricingFormState();
+  _PricingForm2State createState() => _PricingForm2State();
 }
 
-class _PricingFormState extends State<PricingForm> {
+class _PricingForm2State extends State<PricingForm2> {
   final _formKey = GlobalKey<FormState>();
   final usd = Currency.create('USD', 0);
   TextEditingController estimateController = TextEditingController();
-  // TextEditingController debtController = TextEditingController();
-  // TextEditingController renovatedController = TextEditingController();
-  int _estimatedPrice = 0;
-  bool _estValidate = false;
-  // int _debtPrice = 0;
-  // bool _debtValidate = false;
-  // int _renovatedPrice = 0;
-  // bool _renValidate = false;
-
-  void _setAndValidPrice(TextEditingController currentController, bool valid) {
-    setState(() {
-      if (currentController == estimateController) {
-        _estimatedPrice = int.parse(estimateController.text);
-        _estimatedPrice == 0 ? _estValidate = false : _estValidate = true;
-      }
-      // if (currentController == renovatedController) {
-      //   _renovatedPrice = int.parse(renovatedController.text);
-      //   _renovatedPrice == 0 ? _renValidate = false : _renValidate = true;
-      // }
-      // if (currentController == debtController) {
-      //   _debtPrice = int.parse(debtController.text);
-      //   _debtPrice == 0 ? _debtValidate = false : _debtValidate = true;}
-       else if (estimateController.text.isEmpty) _estimatedPrice = 0;
-    });
-  }
-
-
-  Future<void> _nextPage() async {
-    if (_estValidate) {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setInt('estPrice', this._estimatedPrice);
-      // await prefs.setInt('renovatePrice', this._renovatedPrice);
-      // await prefs.setInt('debtPrice', this._debtPrice);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PricingForm2(camera: widget.camera)),
-      );
-    } else {
-      return null;
-    }
-  }
+  TextEditingController debtController = TextEditingController();
+  TextEditingController renovatedController = TextEditingController();
+  int _renovatedPrice = 0;
+  bool _renValidate = false;
 
   Widget priceCard(String title, TextEditingController currentController,
       int price, bool valid) {
@@ -75,16 +38,19 @@ class _PricingFormState extends State<PricingForm> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            mainAxisAlignment:  MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               propText(title, 25, Colors.amber[50]),
-              Divider(indent: 10, endIndent: 10, thickness: 3,),
+              Divider(
+                indent: 10,
+                endIndent: 10,
+                thickness: 3,
+              ),
               TextField(
                 controller: currentController,
                 decoration: InputDecoration(
                     labelText: "Enter your number",
-                    errorText:
-                        valid ? null : "you must enter a number"),
+                    errorText: valid ? null : "you must enter a number"),
                 style: TextStyle(color: Colors.white, fontSize: 20),
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
@@ -100,7 +66,8 @@ class _PricingFormState extends State<PricingForm> {
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(Money.fromInt(price, usd).format('S###,###'),
-                    style: TextStyle(fontSize:50, color: ThemeColors.ACCENT_COLOR)),
+                    style: TextStyle(
+                        fontSize: 50, color: ThemeColors.ACCENT_COLOR)),
               ),
               SizedBox(
                 height: 10.0,
@@ -113,12 +80,35 @@ class _PricingFormState extends State<PricingForm> {
     );
   }
 
+  void _setAndValidPrice(TextEditingController currentController, bool valid) {
+    setState(() {
+      if (currentController == renovatedController) {
+        _renovatedPrice = int.parse(renovatedController.text);
+        _renovatedPrice == 0 ? _renValidate = false : _renValidate = true;
+      } else if (renovatedController.text.isEmpty) _renovatedPrice = 0;
+    });
+  }
+
+  Future<void> _nextPage() async {
+    if (_renValidate) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt('renovatePrice', this._renovatedPrice);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PricingForm3(camera: widget.camera)),
+      );
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColors.BACKGROUND_COLOR,
       appBar: AppBar(
-        title: Text("Price Estimation"),
+        title: Text("Price After Renovation"),
       ),
       body: Padding(
           padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
@@ -134,31 +124,15 @@ class _PricingFormState extends State<PricingForm> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 15),
                           child: priceCard(
-                              "What would you estimate the house's 'as is' price to be?",
-                              estimateController,
-                              this._estimatedPrice,
-                              this._estValidate),
+                              "What would you estimate the house's price to be after renovation?",
+                              renovatedController,
+                              this._renovatedPrice,
+                              this._renValidate),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(bottom: 15),
-                        //   child: priceCard(
-                        //       "What would you estimate the house's price to be after renovation?",
-                        //       renovatedController,
-                        //       this._renovatedPrice,
-                        //       this._renValidate),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(bottom: 15),
-                        //   child: priceCard(
-                        //       "How much debt does the home have?",
-                        //       debtController,
-                        //       this._debtPrice,
-                        //       this._debtValidate),
-                        // )
-                        logoIcon(200,300)
                       ],
                     ),
                   ),
+                  logoIcon(200,300)
                 ],
               ),
             ),

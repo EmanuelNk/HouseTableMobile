@@ -11,6 +11,14 @@ Widget propText(String data, double size, Color textColor) {
   );
 }
 
+Widget logoIcon(double width, double height){
+  return Image.asset(
+                  'assets/HouseTableLogo.png',
+                  height: height,
+                  width: width,
+                );
+}
+
 Widget titledPropText(
     String title, String data, double size, Color titleColor, Color textColor) {
   return Padding(
