@@ -2,8 +2,10 @@ import 'dart:ui';
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:housetable_mobile/screens/loadingScreen.dart';
 import 'package:housetable_mobile/screens/outputScreen.dart';
 import 'package:housetable_mobile/utils/theme.dart';
+import 'package:housetable_mobile/widgets/BaseWidgets.dart';
 import 'package:housetable_mobile/widgets/cards.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
@@ -36,19 +38,23 @@ class _CapturePageState extends State<CapturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("House Scan"),
+      ),
       backgroundColor: ThemeColors.BACKGROUND_COLOR,
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Icon(Icons.menu, size: 35, color: Colors.white),
-                  Icon(Icons.add, size: 35, color: Colors.white)
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: <Widget>[
+              //     Icon(Icons.menu, size: 35, color: Colors.white),
+              //     Icon(Icons.add, size: 35, color: Colors.white)
+              //   ],
+              // ),
               SafeArea(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,22 +62,32 @@ class _CapturePageState extends State<CapturePage> {
                       return captureCard(context, p, widget.camera);
                     }).toList()),
               ),
+              
               Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
                 child: OutlineButton(
-                  color: Colors.blue,
-                  child: Text('finish'),
+                  shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0)),
+                  borderSide: BorderSide(color: ThemeColors.ACCENT_COLOR,),
+                  color: ThemeColors.ACCENT_BRIGHTER,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Finish', style: TextStyle(fontSize: 20),),
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => OutputForm(
+                          builder: (context) => LoadingScreen()
+                          // OutputForm(
                                 
-                              )),
+                          //     )
+                              ),
                     );
                   },
                 ),
-              )
+              ),
+              Divider(height: 5, indent: 10,endIndent: 10,),
+              logoIcon(200,200),
             ],
           ),
         ),

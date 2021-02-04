@@ -9,5 +9,5 @@ class StatusInfo {
   int value;
   int deals;
 
-  StatusInfo({this.status,this.housesInfo,this.labelColor,value,this.deals});
+  StatusInfo({this.status,this.housesInfo,this.labelColor,this.value,this.deals});
 }

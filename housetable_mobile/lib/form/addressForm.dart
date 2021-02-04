@@ -109,14 +109,15 @@ class _AddressFormState extends State<AddressForm> {
     return Scaffold(
       backgroundColor: ThemeColors.BACKGROUND_COLOR,
       appBar: AppBar(
-        title: Text("New Request"),
+        title: Text("Addresst"),
       ),
-      body: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
-          child: Form(
-            key: _formKey,
-            child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
+            child: Form(
+              key: _formKey,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   SizedBox(
                     width: double.infinity,
@@ -203,10 +204,11 @@ class _AddressFormState extends State<AddressForm> {
                       ),
                     ),
                   ),
+                  logoIcon(200,300)
                 ],
               ),
-            ),
-          )),
+            )),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.navigate_next),
         disabledElevation: 0,

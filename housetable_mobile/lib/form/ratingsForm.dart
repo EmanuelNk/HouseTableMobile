@@ -36,30 +36,33 @@ class _RatingsFormState extends State<RatingsForm> {
   Widget objectRating(String title, int id) {
     return Padding(
       padding: const EdgeInsets.only(top: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          propText(title + ': ', 18, Colors.amber[50]),
-          RatingBar.builder(
-            initialRating: 3,
-            minRating: 1,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemSize: 30,
-            glow: false,
-            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => Icon(
-              Icons.star,
-              color: ThemeColors.ACCENT_COLOR,
+      child: SizedBox(
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            propText(title + ': ', 18, Colors.amber[50]),
+            RatingBar.builder(
+              initialRating: 3,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemSize: 30,
+              glow: false,
+              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: ThemeColors.ACCENT_COLOR,
+              ),
+              onRatingUpdate: (rating) {
+                setState(() {
+                  this._ratings[id] = rating;
+                });
+              },
             ),
-            onRatingUpdate: (rating) {
-              setState(() {
-                this._ratings[id] = rating;
-              });
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -69,13 +72,13 @@ class _RatingsFormState extends State<RatingsForm> {
     return Scaffold(
       backgroundColor: ThemeColors.BACKGROUND_COLOR,
       appBar: AppBar(
-        title: Text("Rating Form"),
+        title: Text("Condition rating"),
       ),
-      body: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
-          child: Form(
-            key: _formKey,
-            child: SingleChildScrollView(
+      body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
+            child: Form(
+              key: _formKey,
               child: Column(
                 children: <Widget>[
                   SizedBox(
@@ -111,10 +114,11 @@ class _RatingsFormState extends State<RatingsForm> {
                       ),
                     ),
                   ),
+                  // logoIcon(200,200)
                 ],
               ),
-            ),
-          )),
+            )),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.navigate_next),
         disabledElevation: 0,

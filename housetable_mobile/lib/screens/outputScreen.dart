@@ -18,11 +18,7 @@ class OutputForm extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset(
-              'assets/HouseTableLogo.png',
-              height: 200,
-              width: 200,
-            ),
+            logoIcon(200,200),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,8 +44,7 @@ class OutputForm extends StatelessWidget {
                               (Money.fromInt(
                                           (random.nextInt(40000) + 20000), usd)
                                       .format('S###,###')
-                                      .toString() +
-                                  "\$"),
+                                      .toString()),
                               35,
                               ThemeColors.ACCENT_BRIGHTER),
                         ],

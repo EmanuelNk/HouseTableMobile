@@ -8,6 +8,7 @@ import 'package:housetable_mobile/screens/loanRequests.dart';
 import 'package:housetable_mobile/utils/theme.dart';
 import 'package:housetable_mobile/Classes/captureImage.dart';
 import 'package:camerawesome/camerawesome_plugin.dart';
+import 'package:money2/money2.dart';
 // import package:housetable_mobile/utils/theme.dart';
 
 Widget houseCard(BuildContext context, HouseInfo houseInfo) {
@@ -133,7 +134,8 @@ Widget statusCard(BuildContext context, StatusInfo statusInfo) {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
                           child: Text(
-                            'Value: ' + statusInfo.value.toString(),
+                            'Value: ' +Money.fromInt( statusInfo.value, Currency.create('USD', 0)).format('S###,###')
+                                      .toString(),
                             style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
                         )
@@ -156,6 +158,8 @@ Widget statusCard(BuildContext context, StatusInfo statusInfo) {
         },
       ));
 }
+
+
 
 Widget captureCard(BuildContext context, String roomName, CameraDescription camera) {
   return Padding(
